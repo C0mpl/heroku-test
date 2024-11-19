@@ -1,1 +1,24 @@
-Hello World
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test App</title>
+</head>
+<body>
+  <h1>Users</h1>
+  <ul id="user-list"></ul>
+
+  <script>
+    // Завантаження тестових даних
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        const userList = document.getElementById('user-list');
+        data.forEach(user => {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${user.name} (${user.email})`;
+          userList.appendChild(listItem);
+        });
+      });
+  </script>
+</body>
+</html>
